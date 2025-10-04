@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Shoe Inventory Manager</h1>
+    <p class="lead">Your comprehensive solution for managing shoe inventory efficiently.</p>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-box-seam" style="font-size: 3rem; color: #0d6efd;"></i>
+                <h4 class="card-title mt-3">Inventory Management</h4>
+                <p class="card-text">Track your shoe inventory with ease. Add, edit, and manage all your shoe products in one place.</p>
+                <a asp-controller="Shoes" asp-action="Index" class="btn btn-primary">Manage Shoes</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-graph-up" style="font-size: 3rem; color: #198754;"></i>
+                <h4 class="card-title mt-3">Stock Tracking</h4>
+                <p class="card-text">Monitor stock levels and get alerts for low inventory. Keep your business running smoothly.</p>
+                <a asp-controller="Shoes" asp-action="Index" class="btn btn-success">View Stock</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-plus-circle" style="font-size: 3rem; color: #dc3545;"></i>
+                <h4 class="card-title mt-3">Add New Products</h4>
+                <p class="card-text">Quickly add new shoe products to your inventory with detailed information and pricing.</p>
+                <a asp-controller="Shoes" asp-action="Create" class="btn btn-danger">Add Shoe</a>
+            </div>
+        </div>
+    </div>
+</div>

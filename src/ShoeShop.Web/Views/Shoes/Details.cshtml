@@ -1,0 +1,93 @@
+@model ShoeShop.Infrastructure.Entities.Shoe
+
+@{
+    ViewData["Title"] = "Shoe Details";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title mb-0">Shoe Details</h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-3">ID</dt>
+                    <dd class="col-sm-9">@Model.Id</dd>
+                    
+                    <dt class="col-sm-3">Name</dt>
+                    <dd class="col-sm-9">@Model.Name</dd>
+                    
+                    <dt class="col-sm-3">Brand</dt>
+                    <dd class="col-sm-9">@Model.Brand</dd>
+                    
+                    <dt class="col-sm-3">Price</dt>
+                    <dd class="col-sm-9">$@Model.Price.ToString("F2")</dd>
+                    
+                    <dt class="col-sm-3">Stock</dt>
+                    <dd class="col-sm-9">@Model.Stock units</dd>
+                    
+                    <dt class="col-sm-3">Status</dt>
+                    <dd class="col-sm-9">
+                        @if (Model.Stock <= 5)
+                        {
+                            <span class="badge bg-danger">Low Stock</span>
+                        }
+                        else if (Model.Stock <= 15)
+                        {
+                            <span class="badge bg-warning text-dark">Medium Stock</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">In Stock</span>
+                        }
+                    </dd>
+                    
+                    <dt class="col-sm-3">Inventory Value</dt>
+                    <dd class="col-sm-9">$@((Model.Price * Model.Stock).ToString("F2"))</dd>
+                </dl>
+                
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <div>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Quick Stats</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.Stock <= 5)
+                {
+                    <div class="alert alert-danger">
+                        <strong>Warning!</strong> This item is running low on stock.
+                    </div>
+                }
+                else if (Model.Stock <= 15)
+                {
+                    <div class="alert alert-warning">
+                        <strong>Notice:</strong> This item has medium stock levels.
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-success">
+                        <strong>Good:</strong> This item is well stocked.
+                    </div>
+                }
+                
+                <hr>
+                
+                <p><strong>Per Unit:</strong> $@Model.Price.ToString("F2")</p>
+                <p><strong>Total Value:</strong> $@((Model.Price * Model.Stock).ToString("F2"))</p>
+                <p><strong>Stock Level:</strong> @Model.Stock units</p>
+            </div>
+        </div>
+    </div>
+</div>
